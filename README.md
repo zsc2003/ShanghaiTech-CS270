@@ -1,2 +1,2 @@
 # ShanghaiTech-CS270
-ShanghaiTech CS270 Digital Image Processing, Spring 202.
+ShanghaiTech CS270 Digital Image Processing, Spring 2024.
