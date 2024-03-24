@@ -97,10 +97,32 @@
 
 \usepackage[margin=1in]{geometry}
 
+\newcounter{ProblemCounter}
+\newcounter{oldvalue}
+\newcommand{\problem}[2][-1]{
+	\setcounter{oldvalue}{\value{secnumdepth}}
+	\setcounter{secnumdepth}{0}
+	\ifnum#1>0
+		\setcounter{ProblemCounter}{#1}
+	\else
+		\stepcounter{ProblemCounter}
+	\fi
+	\section{Problem \arabic{ProblemCounter}: #2}
+	\setcounter{secnumdepth}{\value{oldvalue}}
+}
+\newcommand{\subproblem}[1]{
+	\setcounter{oldvalue}{\value{section}}
+	\setcounter{section}{\value{ProblemCounter}}
+	\subsection{#1}
+	\setcounter{section}{\value{oldvalue}}
+}
+
+
+
 \begin{document}
 
 \title{	Digital Image Processing, 2024 Spring\\Homework 1}
-\date{Due 23:59 (CST), Mar. TBD, 2024 }
+\date{Due 23:59 (CST), Apr. 7, 2024 }
 
 \author{
     Name: \textbf{Zhou Shouchen} \\
@@ -112,13 +134,42 @@
 \newpage
 %===============================
 
-\section{Problem 1}
+\problem{}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{../images/grain.jpg}
+	\caption{The original image.}
+	\label{fig:1}
+\end{figure}
+
+
+
 
 
 
 \newpage
 
-\section{Problem 2}
+\problem{}
+
+
+
+
+
+
+
+
+\newpage
+
+\problem{}
+
+
+
+
+
+
+
+
 
 
 \end{document}
