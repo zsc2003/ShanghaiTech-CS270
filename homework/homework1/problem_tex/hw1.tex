@@ -182,18 +182,18 @@ You can type \texttt{\textbf{help} FunctionName} in Command Window of MATLAB for
 \begin{enumerate}[\bfseries(a)] \setlength{\parskip}{0.5ex} \vspace*{-2ex}
     \item Compute the histogram of \texttt{grain.tif} and show the histogram image in your report. (Built-in functions \texttt{hist} and \texttt{histogram} are not allowed). \Pt{5}
     \item Implement histogram equalization on \texttt{grain.tif}. Show the histogram equalized image and the histogram of equalized image in your report. (Built-in function \texttt{histeq} is not allowed). \Pt{10}
-    \item Implement contrast limited adaptive histogram equalization (CLAHE) on \texttt{grain.tif}, where you traverse every pixel with a $40 \times 40$ patch and process histogram equalization within each patch and update the center patch of $3 \times 3$. Each time you move the patch with a step of 1 pixel. The clip limit for CLAHE is 0.02, which means that after the normalization of the histogram, amplification above 0.02 should be clipped and evenly distributed to other parts of the histogram. Show the CLAHE processed images and corresponding histogram in your report. (Built-in function  \texttt{adapthisteq} is not allowed)  \Pt{20}
+    \item Implement contrast limited adaptive histogram equalization (CLAHE) on \texttt{tire.tif}, where you traverse every pixel with a $41 \times 41$ patch and process histogram equalization within each patch and update the center patch of $3 \times 3$. Each time you move the patch with a step of 1 pixel. The clip limit for CLAHE is 0.02, which means that after the normalization of the histogram, amplification above 0.02 should be clipped and evenly distributed to other parts of the histogram. Show the CLAHE processed images and corresponding histogram in your report. (Built-in function  \texttt{adapthisteq} is not allowed)  \Pt{20}
 \end{enumerate}
 
 \begin{figure}[h]
         \centering
         \begin{minipage}[t]{0.4\textwidth}
         \centering
-        \includegraphics[height=5cm]{../origin_images/grain.jpg}
+        \includegraphics[height=5cm]{figure/hw1/grain.jpg}
         \end{minipage}
         \begin{minipage}[t]{0.4\textwidth}
         \centering
-        \includegraphics[height=5cm]{../origin_images/tire.jpg}
+        \includegraphics[height=5cm]{figure/hw1/tire.jpg}
         
         \end{minipage}
     \end{figure}
@@ -212,7 +212,7 @@ You can type \texttt{\textbf{help} FunctionName} in Command Window of MATLAB for
 The pixel intensity of the result images should be normalized to \texttt{uint8} values within $[0, 255]$.
 
 \begin{center}
-    \includegraphics[width=5.5cm]{../origin_images/moon.jpg}
+    \includegraphics[width=5.5cm]{figure/hw1/moon_gray.jpg}
 \end{center}
 
 \newpage
@@ -223,7 +223,7 @@ The pixel intensity of the result images should be normalized to \texttt{uint8} 
 Apply the median filter and Gaussian filter to the image \texttt{lena\_noisy.tif}. In your report, Please show the images processed by the median filter and Gaussian filter respectively, and analyze the cause of the results. (Filtering operations cannot be implemented by calling functions, Hint: Choose the best kernel size you think, $\sigma = 1$) \Pt{30}
 
 \begin{center}
-    \includegraphics[height=5.5cm]{../origin_images/lena.jpg}
+    \includegraphics[height=5.5cm]{figure/hw1/lena_gray_noisy.jpg}
 \end{center}
 
 \newpage
