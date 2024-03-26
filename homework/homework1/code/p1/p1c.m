@@ -1,3 +1,5 @@
+clear;clc;
+
 origin_tire = imread('../../origin_images/tire.tif');
 [w, h] = size(origin_tire);
 

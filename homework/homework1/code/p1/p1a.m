@@ -1,3 +1,5 @@
+clear;clc;
+
 origin_grain = imread('../../origin_images/grain.tif');
 gray_num = p1_count_gray_num(origin_grain);
 
