@@ -1,3 +1,5 @@
+clear;clc;
+
 origin_lena = imread('../../origin_images/lena_noisy.tif');
 [w, h] = size(origin_lena);
 
