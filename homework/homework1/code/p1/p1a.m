@@ -1,4 +1,4 @@
-origin_grain = imread('../origin_images/grain.tif');
+origin_grain = imread('../../origin_images/grain.tif');
 gray_num = p1_count_gray_num(origin_grain);
 
 % plot the histogram

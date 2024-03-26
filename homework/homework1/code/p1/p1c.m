@@ -1,4 +1,4 @@
-origin_tire = imread('../origin_images/tire.tif');
+origin_tire = imread('../../origin_images/tire.tif');
 [w, h] = size(origin_tire);
 
 patch_size = 41;
