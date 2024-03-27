@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  26 MAR 2024 15:23
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  27 MAR 2024 00:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -769,39 +769,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-File: ../images/p1a_historgram_origin.jpg Graphic file (type bmp)
-<../images/p1a_historgram_origin.jpg>
+File: ../images/p1/p1a_historgram_origin.jpg Graphic file (type bmp)
+<../images/p1/p1a_historgram_origin.jpg>
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--13
 
  []
 
-File: ../images/p1b_hist_eq_image.jpg Graphic file (type bmp)
-<../images/p1b_hist_eq_image.jpg>
-File: ../images/p1b_historgram_hist_eq.jpg Graphic file (type bmp)
-<../images/p1b_historgram_hist_eq.jpg>
+File: ../images/p1/p1b_hist_eq_image.jpg Graphic file (type bmp)
+<../images/p1/p1b_hist_eq_image.jpg>
+File: ../images/p1/p1b_historgram_hist_eq.jpg Graphic file (type bmp)
+<../images/p1/p1b_historgram_hist_eq.jpg>
 
 Underfull \hbox (badness 10000) in paragraph at lines 22--24
 
  []
 
 [2]
-File: ../images/p1c_image.jpg Graphic file (type bmp)
-<../images/p1c_image.jpg>
-File: ../images/p1c_histogram.jpg Graphic file (type bmp)
-<../images/p1c_histogram.jpg>
- [3]) (./p2.tex [4]) (./p3.tex) [5] (./report.aux)
+File: ../images/p1/p1c_image.jpg Graphic file (type bmp)
+<../images/p1/p1c_image.jpg>
+File: ../images/p1/p1c_histogram.jpg Graphic file (type bmp)
+<../images/p1/p1c_histogram.jpg>
+ [3]) (./p2.tex
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+File: ../images/p1/p1c_image.jpg Graphic file (type bmp)
+<../images/p1/p1c_image.jpg>
+File: ../images/p1/p1c_image.jpg Graphic file (type bmp)
+<../images/p1/p1c_image.jpg>
+File: ../images/p1/p1c_image.jpg Graphic file (type bmp)
+<../images/p1/p1c_image.jpg>
+ [4]) (./p3.tex
+File: ../images/p3/p3a_noisy.jpg Graphic file (type bmp)
+<../images/p3/p3a_noisy.jpg>
+File: ../images/p3/p3a_3x3.jpg Graphic file (type bmp)
+<../images/p3/p3a_3x3.jpg>
+File: ../images/p3/p3a_5x5.jpg Graphic file (type bmp)
+<../images/p3/p3a_5x5.jpg>
+File: ../images/p3/p3a_7x7.jpg Graphic file (type bmp)
+<../images/p3/p3a_7x7.jpg>
+File: ../images/p1/p1c_image.jpg Graphic file (type bmp)
+<../images/p1/p1c_image.jpg>
+) [5] [6] [7] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 19704 strings out of 476683
- 403252 string characters out of 5807576
- 1848012 words of memory out of 5000000
- 39619 multiletter control sequences out of 15000+600000
- 522862 words of font info for 85 fonts, out of 8000000 for 9000
+ 19785 strings out of 476683
+ 404859 string characters out of 5807576
+ 1850012 words of memory out of 5000000
+ 39680 multiletter control sequences out of 15000+600000
+ 528370 words of font info for 111 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  89i,6n,97p,341b,393s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (5 pages).
+Output written on report.pdf (7 pages).

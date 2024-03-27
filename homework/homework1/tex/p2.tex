@@ -1,12 +1,32 @@
 \problem{}
-(a) Laplacian kernel
-processed image
+(a) The Laplacian kernel is that:
+$$
+\nabla^2 f = \begin{bmatrix}
+    0 & 1 & 0 \\
+    1 & -4 & 1 \\
+    0 & 1 & 0
+\end{bmatrix}
+$$
+The kernel is separable, and the separated kernel is:
+$$
+\begin{bmatrix}
+0 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+1 \\
+0
+\end{bmatrix}
+$$
 
+The processed image is shown in Figure \ref{fig:p2a}.
 
-Separated Laplacian kernel
-processed image
-
-
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=0.48\textwidth]{../images/p1/p1c_image.jpg}
+    \caption{Separated Laplacian kernels processed image}
+\label{fig:p2a}
+\end{figure}
 
 
 (b) Sharpened image with unseparated Laplacian kernel
@@ -14,9 +34,18 @@ processed image
 
 
 
+The processed image is shown in Figure \ref{fig:p2b}.
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=0.48\textwidth]{../images/p1/p1c_image.jpg}
+    \caption{Unseparated Laplacian kernels processed image}
+\label{fig:p2b}
+\end{figure}
 
 (c) Sharpened image with unsharpen mask
 
+The processed image is shown in Figure \ref{fig:p2c}.
 
 
 
@@ -24,9 +53,11 @@ processed image
 
 
 
-
-
-
-
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=0.48\textwidth]{../images/p1/p1c_image.jpg}
+    \caption{unsharpen mask processed image}
+\label{fig:p2c}
+\end{figure}
 
 \newpage
