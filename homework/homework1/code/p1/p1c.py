@@ -38,6 +38,7 @@ for i in tqdm.tqdm(range(0, w, step_size)):
 
                 patch[x + patch_range, y + patch_range] = origin_tire[x_idx, y_idx]
 
+        # clip the high amplification
         above_border = 0
         gray_num = count_gray_num(patch)
 
@@ -47,6 +48,8 @@ for i in tqdm.tqdm(range(0, w, step_size)):
                 gray_num[k] = border_line
         
         gray_num += above_border / 256
+        
+        # histogram equalization for the center patch
         prefix_sum = np.cumsum(gray_num) / (patch_size * patch_size)
         prefix_gray = np.round(prefix_sum * 255).astype(np.uint8)
 

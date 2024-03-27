@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from p2_normalization import normalization
+from p2_convolution import convolution
+
+origin_moon = plt.imread('./origin_images/moon.jpg')
+w, h = origin_moon.shape
+
+# two types of smoothing filter for blurring the origin image
+smooth_filter = [np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]]) / 9, np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]]) / 16]
+for i, filter in enumerate(smooth_filter):
+    smoothed_moon = convolution(origin_moon, filter)
+    plt.imshow(normalization(smoothed_moon), cmap='gray')
+    plt.title('smoothed moon with filter ' + str(i + 1))
+    plt.show()
+    
+    # blurred image
+    blurred_moon = origin_moon - smoothed_moon
+    plt.imshow(normalization(blurred_moon), cmap='gray')
+    plt.title('unsharp mask')
+    plt.show()
+
+    # unsharp image
+    unsharp_mask = origin_moon - blurred_moon
+    for k in [1, 4.5]:
+        # sharpened image
+        shrpened_moon = origin_moon + k * unsharp_mask
+        plt.imshow(normalization(shrpened_moon), cmap='gray')
+        plt.title('shrpened moon with k = ' + str(k))
+        plt.show()
