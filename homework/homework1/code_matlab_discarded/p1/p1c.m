@@ -51,7 +51,7 @@ for i = 1:step_size:w
         end
         
         gray_num = gray_num + above_border / 256;
-        prefix_sum = cumsum(gray_num) / (patch_size * patch_size);
+        prefix_sum = cumsum(gray_num) / double(patch_size * patch_size);
         prefix_gray = uint8(round(prefix_sum * 255));
 
         for x = -center_range:center_range
