@@ -1,0 +1,4 @@
+typing
+matplotlib
+numpy
+tqdm

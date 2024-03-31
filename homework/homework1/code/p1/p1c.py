@@ -28,13 +28,13 @@ for i in tqdm.tqdm(range(0, w, step_size)):
 
                 # get the mirror pixel
                 if x_idx < 0:
-                    x_idx = w + x_idx
+                    x_idx = 0
                 elif x_idx >= w:
-                    x_idx = x_idx - w
+                    x_idx = w - 1
                 if y_idx < 0:
-                    y_idx = h + y_idx
+                    y_idx = 0
                 elif y_idx >= h:
-                    y_idx = y_idx - h
+                    y_idx = h - 1
 
                 patch[x + patch_range, y + patch_range] = origin_tire[x_idx, y_idx]
 
@@ -58,14 +58,30 @@ for i in tqdm.tqdm(range(0, w, step_size)):
                 x_idx = i + x
                 y_idx = j + y
 
+                # if x_idx < 0:
+                #     x_idx = w + x_idx
+                # elif x_idx >= w:
+                #     x_idx = x_idx - w
+                # if y_idx < 0:
+                #     y_idx = h + y_idx
+                # elif y_idx >= h:
+                #     y_idx = y_idx - h
+                # if x_idx < 0:
+                #     x_idx = -x_idx
+                # elif x_idx >= w:
+                #     x_idx = 2 * w - x_idx - 1
+                # if y_idx < 0:
+                #     y_idx = -y_idx
+                # elif y_idx >= h:
+                #     y_idx = 2 * h - y_idx - 1
                 if x_idx < 0:
-                    x_idx = w + x_idx
+                    x_idx = 0
                 elif x_idx >= w:
-                    x_idx = x_idx - w
+                    x_idx = w - 1
                 if y_idx < 0:
-                    y_idx = h + y_idx
+                    y_idx = 0
                 elif y_idx >= h:
-                    y_idx = y_idx - h
+                    y_idx = h - 1
 
                 output_tire[x_idx, y_idx] = prefix_gray[origin_tire[x_idx, y_idx]]
 

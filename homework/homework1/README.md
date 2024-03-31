@@ -1,11 +1,22 @@
-requirements:
-typing
-matplotlib
-numpy
-tqdm
+To set up the environment for running the code, follow the steps below:
+```bash
+conda create -n CS270 python=3.10
+conda activate CS270
+pip install -r requirements.txt
+```
 
+To run the code, use the following command:
+```bash
+cd ./$PATH_TO_THIS_REPO
+python ./code/$problem_number/$subproblem_number.py
+```
 
-to run the code:
-In current path(same path with the README file)
+Where problem numbers are
+```bash
+p1, p2, p3
+```
 
-python ./code/p1/p1a.py
+subproblem numbers are
+```bash
+p1a, p1b, p1c, p2a, p2b, p2c, p3a, p3b
+```

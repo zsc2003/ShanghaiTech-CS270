@@ -8,7 +8,7 @@ def convolution(image, kernel):
     # zero padding for the image to make sure the output image has the same size as the input image
     x_size = m // 2
     y_size = n // 2
-    image = np.pad(image, ((x_size, x_size), (y_size, y_size)), mode='constant', constant_values=0)
+    image = np.pad(image, ((x_size, x_size), (y_size, y_size)), mode='edge')
     w, h = image.shape
 
     new_image = np.zeros((w, h), dtype=float)
@@ -18,7 +18,6 @@ def convolution(image, kernel):
             for s in range(-x_size, x_size + 1):
                 for t in range(-y_size, y_size + 1):
                     sum += kernel[s + x_size, t + y_size] * image[i - s, j - t]
-
             new_image[i, j] = sum
     
     # ignore the padding part
