@@ -6,9 +6,7 @@ $$
     1 & -4 & 1 \\
     0 & 1 & 0
 \end{bmatrix}
-$$
-The kernel is separable, and the separated kernel is:
-$$
+=
 \begin{bmatrix}
     0 & 1 & 0 \\
     0 & -2 & 0 \\
@@ -21,11 +19,25 @@ $$
     0 & 0 & 0
 \end{bmatrix}
 $$
+We can seperate the Laplcian kernel along the $x$-direction and $y$-direction, and we can simplify them into 1-D:
+% $$
+% \begin{bmatrix}
+%     0 & 1 & 0 \\
+%     0 & -2 & 0 \\
+%     0 & 1 & 0
+% \end{bmatrix}
+% \text{\ \ and \ \ }
+% \begin{bmatrix}
+%     0 & 0 & 0 \\
+%     1 & -2 & 1 \\
+%     0 & 0 & 0
+% \end{bmatrix}
+% $$
 
-$$\begin{bmatrix}1\\2\\1\end{bmatrix}$$
-$$\begin{bmatrix}1 & -2 & 1\end{bmatrix}$$
+$$\begin{bmatrix}1\\-2\\1\end{bmatrix} \text{\ \ and \ \ } \begin{bmatrix}1 & -2 & 1\end{bmatrix}$$
 
-The processed image is shown in Figure \ref{fig:p2a}.
+The processed image corresponding to the kernel above all shown in Figure \ref{fig:p2a}.\\
+And all pixel intensity of the result images are normalized to uint8 values within $[0,255]$.\\
 
 \begin{figure}[htbp]
     \centering
@@ -36,30 +48,31 @@ The processed image is shown in Figure \ref{fig:p2a}.
 \end{figure}
 
 
-(b) Sharpened image with unseparated Laplacian kernel
-
-1\\
-
-
-The processed image is shown in Figure \ref{fig:p2b}.
+(b) The Sharpened image with unseparated Laplacian kernel is shown in Figure \ref{fig:p2b}.\\
+And all pixel intensity of the result images are normalized to uint8 values within $[0,255]$.\\
 
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=0.48\textwidth]{../images/p2/p2b_Laplacian.png}
-    \caption{Unseparated Laplacian kernels processed image}
+    \caption{Unseparated Laplacian kernel processed image}
 \label{fig:p2b}
 \end{figure}
 
-(c) Sharpened image with unsharpen mask
+(c) The Sharpened image with unsharpen mask is shown in Figure \ref{fig:p2c}.\\
+The left column is smoothed with the kernel 
+$$\text{kernel\ 1}=\dfrac{1}{9}\begin{bmatrix}1 & 1 & 1\\1 & 1 & 1\\1 & 1 & 1\end{bmatrix}$$
 
-The processed image is shown in Figure \ref{fig:p2c}.
+And the right column is smoothed with the kernel
+$$\text{kernel\ 2}=\dfrac{1}{16}\begin{bmatrix}1 & 2 & 1\\2 & 4 & 2\\1 & 2 & 1\end{bmatrix}$$
 
+Suppose the origin image is $f(x,y)$.\\
+The first row are the smoothed images processed by kernel1 and kernel2, mark as $\overline{f(x,y)}$.\\
+The second row are the unsharped masks processed by kernel1 and kernel2. i.e. the difference between the
+origin image and the smoothed image. i.e. $g_{mask}(x,y)=f(x,y)-\overline{f(x,y)}$.\\
+The third and the forth rows are the sharpened images with different $k$. i.e. $g(x,y)=f(x,y)+k\cdot g_{mask}(x,y)$\\
+The third row is the sharpened image with $k=1$, and the forth row is the sharpened image with $k=4.5$.\\
 
-
-
-
-
-
+And all pixel intensity of the result images are normalized to uint8 values within $[0,255]$.\\
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=0.48\textwidth]{../images/p2/p2c_smooth_1.png}
