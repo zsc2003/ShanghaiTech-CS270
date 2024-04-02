@@ -9,6 +9,7 @@ def convolution(image, kernel):
     x_size = m // 2
     y_size = n // 2
     image = np.pad(image, ((x_size, x_size), (y_size, y_size)), mode='edge')
+
     w, h = image.shape
 
     new_image = np.zeros((w, h), dtype=float)

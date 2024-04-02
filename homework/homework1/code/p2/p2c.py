@@ -4,6 +4,10 @@ from p2_normalization import normalization
 from p2_convolution import convolution
 
 origin_moon = plt.imread('./origin_images/moon.jpg')
+plt.imshow(origin_moon, cmap='gray')
+plt.title('origin moon')
+plt.show()
+
 w, h = origin_moon.shape
 
 # two types of smoothing filter for blurring the origin image
