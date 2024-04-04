@@ -4,6 +4,10 @@ import numpy as np
 origin_lena = plt.imread('./origin_images/lena_noisy.tif')
 w, h = origin_lena.shape
 
+fig, ax = plt.subplots(2, 2)
+ax[0, 0].imshow(origin_lena, cmap='gray')
+ax[0, 0].set_title('origin lena')
+
 # median filter
 for kernel_range in range(1, 4):
     kernel_size = 2 * kernel_range + 1
@@ -20,6 +24,9 @@ for kernel_range in range(1, 4):
             
             median_lena[i, j] = np.uint8(np.median(neighbouring_pixels))
 
-    plt.imshow(median_lena, cmap='gray')
-    plt.title('median filtered lena with kernel size ' + str(kernel_size))
-    plt.show()
+    row = kernel_range // 2
+    col = kernel_range % 2
+    ax[row, col].imshow(median_lena, cmap='gray')
+    ax[row, col].set_title('median filtered lena with kernel size ' + str(kernel_size))
+
+plt.show()

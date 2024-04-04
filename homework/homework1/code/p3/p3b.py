@@ -6,6 +6,10 @@ origin_lena = plt.imread('./origin_images/lena_noisy.tif')
 w, h = origin_lena.shape
 sigma = 1
 
+fig, ax = plt.subplots(2, 2)
+ax[0, 0].imshow(origin_lena, cmap='gray')
+ax[0, 0].set_title('origin lena')
+
 # Gaussian filter
 for kernel_range in range(1, 4):
     kernel_size = 2 * kernel_range + 1
@@ -19,6 +23,9 @@ for kernel_range in range(1, 4):
     Gaussian_lena = convolution(origin_lena, kernel)
     Gaussian_lena = np.uint8(np.round(Gaussian_lena))
     
-    plt.imshow(Gaussian_lena, cmap='gray')
-    plt.title('Gaussian filtered lena with kernel size ' + str(kernel_size))
-    plt.show()
+    row = kernel_range // 2
+    col = kernel_range % 2
+    ax[row, col].imshow(Gaussian_lena, cmap='gray')
+    ax[row, col].set_title('Gaussian filtered lena with kernel size ' + str(kernel_size))
+
+plt.show()
