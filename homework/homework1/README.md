@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 To run the code, use the following command:
 ```bash
-cd ./$PATH_TO_THIS_REPO
+cd ./$PATH_TO_FOLDER_WITH_README
 python ./code/$problem_number/$subproblem_number.py
 ```
 
