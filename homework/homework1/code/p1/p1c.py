@@ -26,7 +26,7 @@ for i in tqdm.tqdm(range(0, w, step_size)):
                 x_idx = i + x
                 y_idx = j + y
 
-                # get the mirror pixel
+                # expand
                 if x_idx < 0:
                     x_idx = 0
                 elif x_idx >= w:
@@ -58,22 +58,7 @@ for i in tqdm.tqdm(range(0, w, step_size)):
                 x_idx = i + x
                 y_idx = j + y
 
-                # if x_idx < 0:
-                #     x_idx = w + x_idx
-                # elif x_idx >= w:
-                #     x_idx = x_idx - w
-                # if y_idx < 0:
-                #     y_idx = h + y_idx
-                # elif y_idx >= h:
-                #     y_idx = y_idx - h
-                # if x_idx < 0:
-                #     x_idx = -x_idx
-                # elif x_idx >= w:
-                #     x_idx = 2 * w - x_idx - 1
-                # if y_idx < 0:
-                #     y_idx = -y_idx
-                # elif y_idx >= h:
-                #     y_idx = 2 * h - y_idx - 1
+                # expand
                 if x_idx < 0:
                     x_idx = 0
                 elif x_idx >= w:
@@ -86,14 +71,14 @@ for i in tqdm.tqdm(range(0, w, step_size)):
                 output_tire[x_idx, y_idx] = prefix_gray[origin_tire[x_idx, y_idx]]
 
 # image after applying CLAHE
-plt.imshow(output_tire, cmap='gray')
-plt.title('CLAHE processed image')
-plt.show()
+fig, ax = plt.subplots(1, 2)
+ax[0].imshow(output_tire, cmap='gray')
+ax[0].set_title('CLAHE processed image')
 
 # histogram of applyed CIAHE image
 gray_num = count_gray_num(output_tire)
-plt.bar(range(256), gray_num)
-plt.title('histogram of CLAHE processed image')
-plt.xlabel('gray level')
-plt.ylabel('number of pixels')
+ax[1].bar(range(256), gray_num)
+ax[1].set_title('histogram of CLAHE processed image')
+ax[1].set_xlabel('gray level')
+ax[1].set_ylabel('number of pixels')
 plt.show()

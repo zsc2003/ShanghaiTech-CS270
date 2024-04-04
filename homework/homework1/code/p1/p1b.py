@@ -15,14 +15,15 @@ for i in range(w):
     for j in range(h):
         equalized_grain[i][j] = prefix_gray[int(origin_grain[i][j])]
 
+fig, ax = plt.subplots(1, 2)
+        
 # show the equalized image
-plt.imshow(equalized_grain, cmap='gray')
-plt.title('histogram equalized image')
-plt.show()
+ax[0].imshow(equalized_grain, cmap='gray')
+ax[0].set_title('histogram equalized image')
 
 # show the histogram of grain.tif after applying histogram equalization
-plt.bar(range(256), count_gray_num(equalized_grain))
-plt.xlabel('gray level')
-plt.ylabel('number of pixels')
-plt.title('histogram of histogram equalized image')
+ax[1].bar(range(256), count_gray_num(equalized_grain))
+ax[1].set_xlabel('gray level')
+ax[1].set_ylabel('number of pixels')
+ax[1].set_title('histogram of histogram equalized image')
 plt.show()
