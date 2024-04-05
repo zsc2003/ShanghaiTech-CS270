@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  5 APR 2024 12:48
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  5 APR 2024 23:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -785,30 +785,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
 File: ../images/p1/p1c.png Graphic file (type bmp)
 <../images/p1/p1c.png>
-[2]) (./p2.tex
+[2] [3]) (./p2.tex
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--41
+Underfull \hbox (badness 10000) in paragraph at lines 26--29
 
  []
 
-File: ../images/p2/p2.png Graphic file (type bmp)
-<../images/p2/p2.png>
+File: ../images/p2/p2a.png Graphic file (type bmp)
+<../images/p2/p2a.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--52
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
 
  []
 
 File: ../images/p2/p2b.png Graphic file (type bmp)
 <../images/p2/p2b.png>
-[3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 67--73
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--61
 
  []
 
+[4]
 File: ../images/p2/p2c_1_no_drop.png Graphic file (type bmp)
 <../images/p2/p2c_1_no_drop.png>
 File: ../images/p2/p2c_1_drop.png Graphic file (type bmp)
@@ -817,24 +818,24 @@ File: ../images/p2/p2c_2_no_drop.png Graphic file (type bmp)
 <../images/p2/p2c_2_no_drop.png>
 File: ../images/p2/p2c_2_drop.png Graphic file (type bmp)
 <../images/p2/p2c_2_drop.png>
-[5]) (./p3.tex
+ [5] [6]) (./p3.tex
 File: ../images/p3/p3a.png Graphic file (type bmp)
 <../images/p3/p3a.png>
- [6]
+ [7]
 File: ../images/p3/p3b.png Graphic file (type bmp)
 <../images/p3/p3b.png>
-) [7] [8] (./report.aux)
+) [8] [9] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 19801 strings out of 476683
- 404818 string characters out of 5807576
- 1856012 words of memory out of 5000000
+ 19802 strings out of 476683
+ 404828 string characters out of 5807576
+ 1858012 words of memory out of 5000000
  39694 multiletter control sequences out of 15000+600000
  528370 words of font info for 111 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  89i,6n,97p,420b,395s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (8 pages).
+Output written on report.pdf (9 pages).

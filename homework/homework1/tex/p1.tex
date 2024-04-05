@@ -21,6 +21,8 @@ the histogram of that histogram equalized image.\\
 (c) The left image of Figure \ref{fig:p1c} is the CLAHE processed image, and the right one is 
 the histogram of that CLAHE processed image.\\
 
+And for the details of CLAHE, the image is padded with the edge values, since during the CLAHE process, it may need to access the pixels outside the image.
+
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{../images/p1/p1c.png}
