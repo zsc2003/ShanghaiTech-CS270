@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  31 MAR 2024 15:36
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  5 APR 2024 12:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -769,28 +769,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-File: ../images/p1/p1a_historgram_origin.png Graphic file (type bmp)
-<../images/p1/p1a_historgram_origin.png>
+File: ../images/p1/p1a.png Graphic file (type bmp)
+<../images/p1/p1a.png>
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--13
 
  []
 
-File: ../images/p1/p1b_hist_eq_image.png Graphic file (type bmp)
-<../images/p1/p1b_hist_eq_image.png>
-File: ../images/p1/p1b_historgram_hist_eq.png Graphic file (type bmp)
-<../images/p1/p1b_historgram_hist_eq.png>
+File: ../images/p1/p1b.png Graphic file (type bmp)
+<../images/p1/p1b.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--24
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
-[2]
-File: ../images/p1/p1c_image.png Graphic file (type bmp)
-<../images/p1/p1c_image.png>
-File: ../images/p1/p1c_histogram.png Graphic file (type bmp)
-<../images/p1/p1c_histogram.png>
- [3]) (./p2.tex
+File: ../images/p1/p1c.png Graphic file (type bmp)
+<../images/p1/p1c.png>
+[2]) (./p2.tex
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
@@ -800,73 +795,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
-File: ../images/p2/p2a_x_direction.png Graphic file (type bmp)
-<../images/p2/p2a_x_direction.png>
-File: ../images/p2/p2a_y_direction.png Graphic file (type bmp)
-<../images/p2/p2a_y_direction.png>
+File: ../images/p2/p2.png Graphic file (type bmp)
+<../images/p2/p2.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--53
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
 
  []
 
-File: ../images/p2/p2b_Laplacian.png Graphic file (type bmp)
-<../images/p2/p2b_Laplacian.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--74
+File: ../images/p2/p2b.png Graphic file (type bmp)
+<../images/p2/p2b.png>
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 67--73
 
  []
 
-[4]
-File: ../images/p2/p2c_smooth_1.png Graphic file (type bmp)
-<../images/p2/p2c_smooth_1.png>
-File: ../images/p2/p2c_smooth_2.png Graphic file (type bmp)
-<../images/p2/p2c_smooth_2.png>
-File: ../images/p2/p2c_unsharp_1.png Graphic file (type bmp)
-<../images/p2/p2c_unsharp_1.png>
-File: ../images/p2/p2c_unsharp_2.png Graphic file (type bmp)
-<../images/p2/p2c_unsharp_2.png>
-File: ../images/p2/p2c_sharpened_1_1.png Graphic file (type bmp)
-<../images/p2/p2c_sharpened_1_1.png>
-File: ../images/p2/p2c_sharpened_2_1.png Graphic file (type bmp)
-<../images/p2/p2c_sharpened_2_1.png>
-File: ../images/p2/p2c_sharpened_1_45.png Graphic file (type bmp)
-<../images/p2/p2c_sharpened_1_45.png>
-File: ../images/p2/p2c_sharpened_2_45.png Graphic file (type bmp)
-<../images/p2/p2c_sharpened_2_45.png>
-
-
-LaTeX Warning: Float too large for page by 30.46564pt on input line 88.
-
-[5] [6]) (./p3.tex
-File: ../images/p3/p3_noisy.png Graphic file (type bmp)
-<../images/p3/p3_noisy.png>
-File: ../images/p3/p3a_3x3.png Graphic file (type bmp)
-<../images/p3/p3a_3x3.png>
-File: ../images/p3/p3a_5x5.png Graphic file (type bmp)
-<../images/p3/p3a_5x5.png>
-File: ../images/p3/p3a_7x7.png Graphic file (type bmp)
-<../images/p3/p3a_7x7.png>
- [7]
-File: ../images/p3/p3_noisy.png Graphic file (type bmp)
-<../images/p3/p3_noisy.png>
-File: ../images/p3/p3b_3x3.png Graphic file (type bmp)
-<../images/p3/p3b_3x3.png>
-File: ../images/p3/p3b_5x5.png Graphic file (type bmp)
-<../images/p3/p3b_5x5.png>
-File: ../images/p3/p3b_7x7.png Graphic file (type bmp)
-<../images/p3/p3b_7x7.png>
-) [8] [9] (./report.aux)
+File: ../images/p2/p2c_1_no_drop.png Graphic file (type bmp)
+<../images/p2/p2c_1_no_drop.png>
+File: ../images/p2/p2c_1_drop.png Graphic file (type bmp)
+<../images/p2/p2c_1_drop.png>
+File: ../images/p2/p2c_2_no_drop.png Graphic file (type bmp)
+<../images/p2/p2c_2_no_drop.png>
+File: ../images/p2/p2c_2_drop.png Graphic file (type bmp)
+<../images/p2/p2c_2_drop.png>
+[5]) (./p3.tex
+File: ../images/p3/p3a.png Graphic file (type bmp)
+<../images/p3/p3a.png>
+ [6]
+File: ../images/p3/p3b.png Graphic file (type bmp)
+<../images/p3/p3b.png>
+) [7] [8] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 19898 strings out of 476683
- 408548 string characters out of 5807576
- 1857012 words of memory out of 5000000
- 39778 multiletter control sequences out of 15000+600000
+ 19801 strings out of 476683
+ 404818 string characters out of 5807576
+ 1856012 words of memory out of 5000000
+ 39694 multiletter control sequences out of 15000+600000
  528370 words of font info for 111 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
  89i,6n,97p,420b,395s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (9 pages).
+Output written on report.pdf (8 pages).
