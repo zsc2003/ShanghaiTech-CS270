@@ -6,12 +6,13 @@ from p2_convolution import convolution
 origin_lena = plt.imread('./origin_images/moon.jpg')
 
 # x direction
-I_xx = np.array([[1, -2, 1]])
+I_xx = np.array([[1], [-2], [1]])
+print(I_xx.shape)
 x_direction = convolution(origin_lena, I_xx)
 x_direction = normalization(x_direction)
 
 # y direction
-I_yy = np.array([[1], [-2], [1]])
+I_yy = np.array([[1, -2, 1]])
 y_direction = convolution(origin_lena, I_yy)
 y_direction = normalization(y_direction)
 
