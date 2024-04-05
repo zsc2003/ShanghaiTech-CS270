@@ -13,7 +13,7 @@ Laplacian_image = convolution(origin_lena, Laplacian_kernel_sharp)
 fig, ax = plt.subplots(1, 2)
 
 ax[0].imshow(np.minimum(np.maximum(Laplacian_image, 0),255), cmap='gray')
-ax[0].set_title('Laplacian kernel(drop < 0)')
+ax[0].set_title('Laplacian kernel(dropped)')
 
 ax[1].imshow(Laplacian_image, cmap='gray')
 ax[1].set_title('Laplacian kernel(without dropping)')
