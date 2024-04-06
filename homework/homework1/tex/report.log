@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  6 APR 2024 22:08
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  6 APR 2024 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -787,11 +787,11 @@ File: ../images/p1/p1c.png Graphic file (type bmp)
 <../images/p1/p1c.png>
 [2] [3]) (./p2.tex
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
@@ -800,17 +800,17 @@ File: ../images/p2/p2a.png Graphic file (type bmp)
 File: ../images/p2/p2b.png Graphic file (type bmp)
 <../images/p2/p2b.png>
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+Underfull \hbox (badness 10000) in paragraph at lines 55--58
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--71
+Underfull \hbox (badness 10000) in paragraph at lines 66--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--75
+Underfull \hbox (badness 10000) in paragraph at lines 74--77
 
  []
 
@@ -829,17 +829,17 @@ File: ../images/p3/p3a.png Graphic file (type bmp)
 File: ../images/p3/p3b.png Graphic file (type bmp)
 <../images/p3/p3b.png>
  [8]
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--45
+Underfull \hbox (badness 10000) in paragraph at lines 44--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
 
  []
 
