@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from p1_count_gray_num import count_gray_num
 import numpy as np
 import tqdm
+from p1_count_gray_num import count_gray_num
 
 origin_tire = plt.imread('./origin_images/tire.tif')
 w, h = origin_tire.shape

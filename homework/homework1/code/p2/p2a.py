@@ -7,7 +7,6 @@ origin_lena = plt.imread('./origin_images/moon.jpg')
 
 # x direction
 I_xx = np.array([[1], [-2], [1]])
-print(I_xx.shape)
 x_direction = convolution(origin_lena, I_xx)
 x_direction = normalization(x_direction)
 

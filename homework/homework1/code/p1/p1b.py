@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from p1_count_gray_num import count_gray_num
 import numpy as np
+from p1_count_gray_num import count_gray_num
 
 origin_grain = plt.imread('./origin_images/grain.tif')
 gray_num = count_gray_num(origin_grain)

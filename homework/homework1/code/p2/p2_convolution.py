@@ -1,7 +1,7 @@
 import numpy as np
 import tqdm
 
-def convolution(image, kernel):
+def convolution(image: np, kernel: np):
     w, h = image.shape
     m, n = kernel.shape
 
