@@ -8,24 +8,33 @@ origin_lena = plt.imread('./origin_images/moon.jpg')
 # x direction
 I_xx = np.array([[1], [-2], [1]])
 x_direction = convolution(origin_lena, I_xx)
-x_direction = normalization(x_direction)
 
 # y direction
 I_yy = np.array([[1, -2, 1]])
 y_direction = convolution(origin_lena, I_yy)
-y_direction = normalization(y_direction)
 
+# x, y sequentially
+x_y_sequential = convolution(x_direction, I_yy)
+
+# Unseperated Laplacian kernel
 Laplacian_kernel = np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
 unseperated = convolution(origin_lena, Laplacian_kernel)
+
+fig, ax = plt.subplots(2, 2)
+
+x_direction = normalization(x_direction)
+ax[0, 0].imshow(x_direction, cmap='gray')
+ax[0, 0].set_title('x direction kernel')
+
+y_direction = normalization(y_direction)
+ax[0, 1].imshow(y_direction, cmap='gray')
+ax[0, 1].set_title('y direction kernel')
+
+x_y_sequential = normalization(x_y_sequential)
+ax[1, 0].imshow(y_direction, cmap='gray')
+ax[1, 0].set_title('x, y direction sequentially')
+
 unseperated = normalization(unseperated)
-
-fig, ax = plt.subplots(1, 3)
-ax[0].imshow(x_direction, cmap='gray')
-ax[0].set_title('x direction kernel')
-
-ax[1].imshow(y_direction, cmap='gray')
-ax[1].set_title('y direction kernel')
-
-ax[2].imshow(unseperated, cmap='gray')
-ax[2].set_title('Unseperated Laplacian kernel')
+ax[1, 1].imshow(unseperated, cmap='gray')
+ax[1, 1].set_title('Unseperated Laplacian kernel')
 plt.show()
