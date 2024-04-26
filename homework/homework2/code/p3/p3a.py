@@ -32,7 +32,7 @@ HSI_image = np.stack((H, S, I), axis=2)
 
 plt.subplot(1, 2, 1)
 plt.imshow(origin_image)
-plt.title('origin image')
+plt.title('RGB image')
 plt.axis('off')
 
 plt.subplot(1, 2, 2)
