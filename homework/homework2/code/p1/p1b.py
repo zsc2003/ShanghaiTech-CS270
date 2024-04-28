@@ -2,12 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 from p1_normalization import normalization
 
+def distance_square(P, Q):
+    # D_square = (i - P // 2) ** 2 + (j - Q // 2) ** 2)
+    i = np.arange(P)
+    j = np.arange(Q)
+    I, J = np.meshgrid(i, j)
+    D_square = (I - P // 2) ** 2 + (J - Q // 2) ** 2
+    return D_square
+
 def Gaussian_high_pass_filter(P, Q, D0):
-    filter = np.zeros((P, Q))
-    for i in range(P):
-        for j in range(Q):
-            filter[i, j] = 1 - np.exp(-((i - P // 2) ** 2 + (j - Q // 2) ** 2) / (2 * D0 ** 2))
-    return filter
+    H = 1 - np.exp(-distance_square(P, Q) / (2 * D0 ** 2))
+    return H
 
 def show_Gaussian(P, Q, H):
     # show the Gaussian high pass filter
