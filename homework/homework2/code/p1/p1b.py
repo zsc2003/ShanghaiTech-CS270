@@ -6,7 +6,7 @@ def distance_square(P, Q):
     # D_square = (i - P // 2) ** 2 + (j - Q // 2) ** 2)
     i = np.arange(P)
     j = np.arange(Q)
-    I, J = np.meshgrid(i, j)
+    J, I = np.meshgrid(j, i)
     D_square = (I - P // 2) ** 2 + (J - Q // 2) ** 2
     return D_square
 
