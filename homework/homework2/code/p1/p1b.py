@@ -39,13 +39,13 @@ def show_filter(origin_image, origin_image_fft_shift, origin_image_fft_shift_fil
     axs[0, 0].set_title('origin image')
 
     axs[0, 1].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift))), cmap='gray')
-    axs[0, 1].set_title('origin image FFT')
+    axs[0, 1].set_title('origin image frequency domain')
 
     axs[1, 0].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift_filtered))), cmap='gray')
-    axs[1, 0].set_title('origin image FFT filtered')
+    axs[1, 0].set_title('filtered image frequency domain')
 
     axs[1, 1].imshow(normalization(origin_image_filtered), cmap='gray')
-    axs[1, 1].set_title('origin image filtered')
+    axs[1, 1].set_title('filtered image')
 
     plt.savefig('images/p1/p1b_filter.png', dpi=300, bbox_inches='tight')
 
