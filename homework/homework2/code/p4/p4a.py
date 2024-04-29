@@ -8,8 +8,7 @@ P = 2 ** np.ceil(np.log2(w)).astype(int)
 Q = 2 ** np.ceil(np.log2(h)).astype(int)
 
 # times (-1) ** (u + v) before FFT for shifting
-image_for_shift = origin_image.copy()
-image_for_shift = image_for_shift * (-1) ** (np.arange(w).reshape(-1, 1) + np.arange(h))
+image_for_shift = origin_image * (-1) ** (np.arange(w).reshape(-1, 1) + np.arange(h))
 
 # FFT
 image_fft_shift = np.fft.fft2(image_for_shift, (P, Q))
