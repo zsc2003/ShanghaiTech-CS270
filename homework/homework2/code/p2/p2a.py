@@ -20,7 +20,7 @@ def show_filter(P, Q, H):
     # show the Gaussian high pass filter
     plt.figure()
     plt.imshow(H, cmap='gray')
-    plt.title('Gaussian high pass filter')
+    plt.title('Homomorphic filter')
     plt.savefig('images/p2/p2a_filter.png', dpi=300, bbox_inches='tight')
 
     # show the gaussian high pass filter in 3D
@@ -30,7 +30,7 @@ def show_filter(P, Q, H):
     x = np.arange(Q)
     X, Y = np.meshgrid(x, y)
     ax.plot_surface(X, Y, H, cmap='viridis')
-    plt.title('Gaussian high pass filter in 3D view')
+    plt.title('Homomorphic filter in 3D view')
     plt.savefig('images/p2/p2a_filter_3D.png', dpi=300, bbox_inches='tight')
 
 # apply homomorphic filtering
