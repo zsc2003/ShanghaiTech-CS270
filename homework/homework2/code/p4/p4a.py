@@ -1,12 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-
-
-
-
-
 def generate_frequency_image(origin_image):
     w, h = origin_image.shape
 
