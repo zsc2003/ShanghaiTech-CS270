@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  19 APR 2024 20:31
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  30 APR 2024 15:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -764,23 +764,91 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 [1
 
-] (./p1.tex [2]) (./p2.tex [3]) (./p3.tex [4]) (./p4.tex [5])
+] (./p1.tex
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 2.
 
-Package caption Warning: Unused \captionsetup[figure] on input line 19.
-See the caption package documentation for explanation.
+Underfull \hbox (badness 10000) in paragraph at lines 11--24
 
-(./report.aux)
+ []
+
+File: ../images/p1/p1a.png Graphic file (type bmp)
+<../images/p1/p1a.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
+
+ []
+
+File: ../images/p1/p1b_Gaussian.png Graphic file (type bmp)
+<../images/p1/p1b_Gaussian.png>
+File: ../images/p1/p1b_Gaussian_3D.png Graphic file (type bmp)
+<../images/p1/p1b_Gaussian_3D.png>
+File: ../images/p1/p1b_filter.png Graphic file (type bmp)
+<../images/p1/p1b_filter.png>
+[2] [3] [4]) (./p2.tex
+File: ../images/p2/p2a_filter.png Graphic file (type bmp)
+<../images/p2/p2a_filter.png>
+File: ../images/p2/p2a_filter_3D.png Graphic file (type bmp)
+<../images/p2/p2a_filter_3D.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--24
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+File: ../images/p2/p2a_result.png Graphic file (type bmp)
+<../images/p2/p2a_result.png>
+[6]) (./p3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 19--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--43
+
+ []
+
+[7]
+File: ../images/p3/p3.png Graphic file (type bmp)
+<../images/p3/p3.png>
+ [8]) (./p4.tex
+File: ../images/p4/p4a.png Graphic file (type bmp)
+<../images/p4/p4a.png>
+
+
+LaTeX Warning: Reference `fig:p4b' on page 9 undefined on input line 15.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
+
+ []
+
+[9]) (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 19659 strings out of 476683
- 401829 string characters out of 5807576
- 1846012 words of memory out of 5000000
- 39579 multiletter control sequences out of 15000+600000
- 522862 words of font info for 85 fonts, out of 8000000 for 9000
+ 19793 strings out of 476683
+ 404705 string characters out of 5807576
+ 1862012 words of memory out of 5000000
+ 39684 multiletter control sequences out of 15000+600000
+ 528370 words of font info for 111 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 89i,6n,97p,341b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,16n,97p,341b,398s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (5 pages).
+Output written on report.pdf (9 pages).

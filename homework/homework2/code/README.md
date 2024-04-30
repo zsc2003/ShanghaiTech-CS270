@@ -18,5 +18,14 @@ p1, p2, p3, p4
 
 subproblem numbers are
 ```bash
-p1a, p1b, p2a, p3a, p4a, p4b, p4c
+p1a, p1b, p2a, p3a, p4a, p4b
 ```
+
+Specifically, in order to use the `psf2otf` function, the `p4/p4c` is apply in matlab.
+
+To run the code, use the following command:
+```bash
+cd ./$PATH_TO_FOLDER_WITH_README
+matlab -nodisplay -nosplash -nodesktop -r "run('./$problem_number/$subproblem_number.m');exit;"
+```
+
