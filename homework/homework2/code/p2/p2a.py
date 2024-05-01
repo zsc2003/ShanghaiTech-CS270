@@ -75,15 +75,16 @@ def show_result(origin_image, filtered_image):
     plt.savefig('images/p2/p2a_result.png', dpi=300, bbox_inches='tight')
 
 
-origin_image = plt.imread('images/origin_images/PET-scan.tif').astype(float)
+if __name__ == '__main__':
+    origin_image = plt.imread('images/origin_images/PET-scan.tif').astype(float)
 
-w, h = origin_image.shape
+    w, h = origin_image.shape
 
-# power of 2 for FFT
-P = 2 ** np.ceil(np.log2(w)).astype(int)
-Q = 2 ** np.ceil(np.log2(h)).astype(int)
+    # power of 2 for FFT
+    P = 2 ** np.ceil(np.log2(w)).astype(int)
+    Q = 2 ** np.ceil(np.log2(h)).astype(int)
 
-filtered_image = homomorphic_filtering(origin_image, P, Q)
-print('variance of origin image in region [500~1100, 90~180] is : ', np.var(filtered_image[500:1101, 90:181]))
+    filtered_image = homomorphic_filtering(origin_image, P, Q)
+    print('variance of origin image in region [500~1100, 90~180] is : ', np.var(filtered_image[500:1101, 90:181]))
 
-show_result(origin_image, filtered_image)
+    show_result(origin_image, filtered_image)

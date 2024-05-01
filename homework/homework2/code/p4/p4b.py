@@ -1,55 +1,61 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from p4a import generate_frequency_image
+
 from scipy.ndimage import rotate
-import tqdm
+from skimage.transform import radon
 
-def radon_transform(image, num_angles=180):
-    angles = np.linspace(0, 180, num_angles, endpoint=False)
-    sinogram = np.zeros((num_angles, image.shape[1]))
-    for i, angle in tqdm.tqdm(enumerate(angles)):
-        # 旋转图像
-        rotated_image = rotate(image, angle, reshape=False, order=1, mode='nearest')
-        # 计算垂直方向的投影
-        projection = np.sum(rotated_image, axis=0)
-        sinogram[i, :] = projection
-    return sinogram
+import warnings
+warnings.filterwarnings('ignore')
 
-origin_image = plt.imread('images/origin_images/blurred.tif')
-frequency_image = generate_frequency_image(origin_image)
-N = frequency_image.shape[0]
 
-# 计算 Radon 变换
-radon_image = radon_transform(frequency_image)
+if __name__ == '__main__':
+    origin_image = plt.imread('images/origin_images/blurred.tif')
+    frequency_image = generate_frequency_image(origin_image)
+    N = frequency_image.shape[0]
 
-# 显示结果
-plt.imshow(radon_image, cmap='gray')
-plt.title('Radon Transform')
-plt.axis('off')
-plt.show()
+    sinogram = radon(frequency_image, preserve_range=True)
+    plt.figure()
+    plt.imshow(sinogram, cmap='gray')
+    plt.title('Radon transform')
+    plt.xlabel('Angle (degrees)')
+    plt.ylabel('rho')
+    plt.yticks([0, 20, 120, 220, 320, 420, 520, 620, 640], [-N//2, -300, -200, -100, 0, 100, 200, 300, N//2])
+    plt.savefig('images/p4/p4b_radon.png')
 
-# 找到 Radon 图像中的最大值
-max_value = np.max(radon_image)
-max_index = np.where(radon_image == max_value)
-angle_index = max_index[0][0]  # 获取角度索引
-angles = np.linspace(0, 180, radon_image.shape[0], endpoint=False)
-angle = angles[angle_index]  # 获取估计的角度
+    # theta is the angle of the x-coordinate of the Radon image's maximum value
+    max_value = np.max(sinogram)
+    max_index = np.where(sinogram == max_value)
+    theta = max_index[1][0]
+    print(f'The estimated motion blur angle is {theta} degrees')
 
-print('The estimated motion blur angle is', angle, 'degrees')
+    # Rotate the image to the estimated angle
+    rotated_image = rotate(frequency_image, 180-theta, reshape=False)
+    plt.figure()
+    plt.imshow(rotated_image, cmap='gray')
+    plt.title('Rotated spectrum')
+    plt.axis('off')
+    plt.savefig('images/p4/p4b_rotated_image.png')
 
-# 估计相似暗条纹之间的距离
-# 计算两个最大值之间的距离
-def estimate_distance(sinogram):
-    # 假设我们知道条纹是在最亮的线上
-    brightest_row = sinogram[np.argmax(np.sum(sinogram, axis=1))]
-    peaks = np.where(brightest_row > np.max(brightest_row) * 0.8)[0]
-    if len(peaks) > 1:
-        return np.min(np.diff(peaks))
-    else:
-        return None
+    # get the intensity on the x-axis of rho = 0
+    rho = 0
+    intensity = rotated_image[N//2, :]
+    plt.figure()
+    plt.plot(intensity)
+    plt.title('Verticle projection')
+    plt.xlabel('x-axis')
+    plt.ylabel('Intensity')
+    plt.xticks([0, 20, 120, 220, 320, 420, 520, 620, 640], [' ', -300, -200, -100, 0, 100, 200, 300, ' '])
+    plt.savefig('images/p4/p4b_intensity.png')
 
-distance = estimate_distance(radon_image)
-if distance:
-    print('Estimated distance between stripes:', distance)
-else:
-    print('Could not estimate distance - not enough peaks detected.')
+    # get the motion blur length
+    max_value = np.max(intensity)
+    max_index = np.where(intensity == max_value)[0][0]
+    local_minima = max_index
+    for i in range(max_index, len(intensity)):
+        if intensity[i - 2] > intensity[i - 1] and intensity[i - 1] > intensity[i] and intensity[i + 1] > intensity[i] and intensity[i + 1] < intensity[i + 2] and intensity[i + 2] < intensity[i + 3]:
+            local_minima = i + 1
+            break
+    
+    d = local_minima - max_index
+    print(f'The distance between the two similar dark stripes is {d}')

@@ -53,23 +53,24 @@ def HSI2RGB(HSI_image):
     return recovery_RGB
 
 
-origin_image = plt.imread('images/origin_images/PeppersRGB.jpg')
-HSI_image = RGB2HSI(origin_image)
-recovery_RGB = HSI2RGB(HSI_image)
+if __name__ == '__main__':
+    origin_image = plt.imread('images/origin_images/PeppersRGB.jpg')
+    HSI_image = RGB2HSI(origin_image)
+    recovery_RGB = HSI2RGB(HSI_image)
 
-plt.subplot(1, 3, 1)
-plt.imshow(origin_image)
-plt.title('RGB image')
-plt.axis('off')
+    plt.subplot(1, 3, 1)
+    plt.imshow(origin_image)
+    plt.title('RGB image')
+    plt.axis('off')
 
-plt.subplot(1, 3, 2)
-plt.imshow(HSI_image)
-plt.title('HSI image')
-plt.axis('off')
+    plt.subplot(1, 3, 2)
+    plt.imshow(HSI_image)
+    plt.title('HSI image')
+    plt.axis('off')
 
-plt.subplot(1, 3, 3)
-plt.imshow(recovery_RGB)
-plt.title('Recovery RGB image')
-plt.axis('off')
+    plt.subplot(1, 3, 3)
+    plt.imshow(recovery_RGB)
+    plt.title('Recovery RGB image')
+    plt.axis('off')
 
-plt.savefig('images/p3/p3.png', dpi=300, bbox_inches='tight')
+    plt.savefig('images/p3/p3.png', dpi=300, bbox_inches='tight')

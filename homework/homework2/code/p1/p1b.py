@@ -31,52 +31,64 @@ def show_Gaussian(P, Q, H):
     plt.title('Gaussian high pass filter in 3D view')
     plt.savefig('images/p1/p1b_Gaussian_3D.png', dpi=300, bbox_inches='tight')
 
-def show_filter(origin_image, origin_image_fft_shift, origin_image_fft_shift_filtered, origin_image_filtered):
-    fig, axs = plt.subplots(2, 2)
-    fig.subplots_adjust(hspace=0.4, wspace=0.0)
+def show_result(origin_image, origin_image_fft_shift, origin_image_fft_shift_filtered, origin_image_filtered, sharpened_image):
+    fig, axs = plt.subplots(1, 3)
+    fig.subplots_adjust(wspace=0.6)
 
-    axs[0, 0].imshow(origin_image, cmap='gray')
-    axs[0, 0].set_title('origin image')
+    axs[0].imshow(origin_image, cmap='gray')
+    axs[0].set_title('origin image')
 
-    axs[0, 1].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift))), cmap='gray')
-    axs[0, 1].set_title('origin image frequency domain')
+    axs[1].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift))), cmap='gray')
+    axs[1].set_title('origin image spectrum')
 
-    axs[1, 0].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift_filtered))), cmap='gray')
-    axs[1, 0].set_title('filtered image frequency domain')
-
-    axs[1, 1].imshow(normalization(origin_image_filtered), cmap='gray')
-    axs[1, 1].set_title('filtered image')
-
-    plt.savefig('images/p1/p1b_filter.png', dpi=300, bbox_inches='tight')
+    axs[2].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift_filtered))), cmap='gray')
+    axs[2].set_title('filtered image spectrum')
+    plt.savefig('images/p1/spectrum.png', dpi=300, bbox_inches='tight')
 
 
-origin_image = plt.imread('images/origin_images/Figure1.tif')
+    fig, axs = plt.subplots(1, 2)
+    fig.subplots_adjust(wspace=0.2)
 
-w, h = origin_image.shape
+    axs[0].imshow(normalization(origin_image_filtered), cmap='gray')
+    axs[0].set_title('filtered image')
 
-# power of 2 for FFT
-P = 2 ** np.ceil(np.log2(w)).astype(int)
-Q = 2 ** np.ceil(np.log2(h)).astype(int)
+    axs[1].imshow(normalization(sharpened_image), cmap='gray')
+    axs[1].set_title('sharpened image')
 
-# use Gaussian high pass filter to enhance the image
-D0 = 100
-H = Gaussian_high_pass_filter(P, Q, D0)
+    plt.savefig('images/p1/result.png', dpi=300, bbox_inches='tight')
 
-show_Gaussian(P, Q, H)
 
-# FFT
-origin_image_fft = np.fft.fft2(origin_image, s=(P, Q))
-origin_image_fft_shift = np.fft.fftshift(origin_image_fft)
+if __name__ == '__main__':
+    origin_image = plt.imread('images/origin_images/Figure1.tif')
 
-# apply the Gaussian high pass filter
-origin_image_fft_shift_filtered = origin_image_fft_shift * H
+    w, h = origin_image.shape
 
-# IFFT
-origin_image_fft_filtered = np.fft.ifftshift(origin_image_fft_shift_filtered)
-origin_image_filtered = np.fft.ifft2(origin_image_fft_filtered)
-origin_image_filtered = np.real(origin_image_filtered)
+    # power of 2 for FFT
+    P = 2 ** np.ceil(np.log2(w)).astype(int)
+    Q = 2 ** np.ceil(np.log2(h)).astype(int)
 
-# crop the image
-origin_image_filtered = origin_image_filtered[:w, :h]
+    # use Gaussian high pass filter to enhance the image
+    D0 = 100
+    H = Gaussian_high_pass_filter(P, Q, D0)
 
-show_filter(origin_image, origin_image_fft_shift, origin_image_fft_shift_filtered, origin_image_filtered)
+    show_Gaussian(P, Q, H)
+
+    # FFT
+    origin_image_fft = np.fft.fft2(origin_image, s=(P, Q))
+    origin_image_fft_shift = np.fft.fftshift(origin_image_fft)
+
+    # apply the Gaussian high pass filter
+    origin_image_fft_shift_filtered = origin_image_fft_shift * H
+
+    # IFFT
+    origin_image_fft_filtered = np.fft.ifftshift(origin_image_fft_shift_filtered)
+    origin_image_filtered = np.fft.ifft2(origin_image_fft_filtered)
+    origin_image_filtered = np.real(origin_image_filtered)
+
+    # crop the image
+    origin_image_filtered = origin_image_filtered[:w, :h]
+
+    # sharpen the image
+    sharpened_image = origin_image + origin_image_filtered
+
+    show_result(origin_image, origin_image_fft_shift, origin_image_fft_shift_filtered, origin_image_filtered, sharpened_image)

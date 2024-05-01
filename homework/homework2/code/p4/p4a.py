@@ -11,7 +11,7 @@ def generate_frequency_image(origin_image):
     image_fft_shift = np.fft.fft2(image_for_shift)
 
     # show frequency domain
-    image_fft_shift_abs = 20 * np.log(100 + np.abs(image_fft_shift))
+    image_fft_shift_abs = np.log(1 + np.abs(image_fft_shift))
 
     return image_fft_shift_abs
 
