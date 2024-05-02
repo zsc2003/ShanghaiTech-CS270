@@ -39,7 +39,8 @@ if __name__ == '__main__':
 
     # get the intensity on the x-axis of rho = 0
     rho = 0
-    intensity = rotated_image[N//2, :]
+    # intensity = rotated_image[N//2, :]
+    intensity = np.sum(rotated_image, axis=0)
     plt.figure()
     plt.plot(intensity)
     plt.title('Verticle projection')
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     local_minima = max_index
     for i in range(max_index, len(intensity)):
         if intensity[i - 2] > intensity[i - 1] and intensity[i - 1] > intensity[i] and intensity[i + 1] > intensity[i] and intensity[i + 1] < intensity[i + 2] and intensity[i + 2] < intensity[i + 3]:
-            local_minima = i + 1
+            local_minima = i
             break
     
     d = local_minima - max_index
