@@ -46,7 +46,7 @@ if __name__ == '__main__':
     plt.title('Verticle projection')
     plt.xlabel('x-axis')
     plt.ylabel('Intensity')
-    plt.xticks([0, 53, 153, 253, 353, 453, 553, 653, 753, 853, 906], [' ', -400, -300, -200, -100, 0, 100, 200, 300, 400, ' '])
+    plt.xticks([0, 20, 120, 220, 320, 420, 520, 620, 640], [' ', -300, -200, -100, 0, 100, 200, 300, ' '])
     plt.savefig('images/p4/p4b_intensity.png')
 
     # get the motion blur length
