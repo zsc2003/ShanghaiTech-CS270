@@ -43,7 +43,7 @@ def show_result(origin_image, origin_image_fft_shift, origin_image_fft_shift_fil
 
     axs[2].imshow(normalization(20 * np.log(1 + np.abs(origin_image_fft_shift_filtered))), cmap='gray')
     axs[2].set_title('filtered image spectrum')
-    plt.savefig('images/p1/spectrum.png', dpi=300, bbox_inches='tight')
+    plt.savefig('images/p1/p1b_spectrum.png', dpi=300, bbox_inches='tight')
 
 
     fig, axs = plt.subplots(1, 2)
@@ -55,7 +55,7 @@ def show_result(origin_image, origin_image_fft_shift, origin_image_fft_shift_fil
     axs[1].imshow(normalization(sharpened_image), cmap='gray')
     axs[1].set_title('sharpened image')
 
-    plt.savefig('images/p1/result.png', dpi=300, bbox_inches='tight')
+    plt.savefig('images/p1/p1b_result.png', dpi=300, bbox_inches='tight')
 
 
 if __name__ == '__main__':
