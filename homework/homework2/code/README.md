@@ -23,9 +23,8 @@ p1a, p1b, p2a, p3a, p4a, p4b
 
 Specifically, in order to use the `psf2otf` function, the `p4/p4c` is apply in matlab.
 
-To run the code, use the following command:
+To run the code, use the following command in matlab in folder `$PATH_TO_FOLDER_WITH_README/p4`:
 ```bash
-cd ./$PATH_TO_FOLDER_WITH_README
-matlab -nodisplay -nosplash -nodesktop -r "run('./p4/p4c.m');exit;"
+p4c
 ```
 
