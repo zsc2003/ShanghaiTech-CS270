@@ -14,13 +14,13 @@ if __name__ == '__main__':
     frequency_image = generate_frequency_image(origin_image)
     N = frequency_image.shape[0]
 
-    sinogram = radon(frequency_image, preserve_range=True)
+    sinogram = radon(frequency_image, circle=False)
     plt.figure()
     plt.imshow(sinogram, cmap='gray')
     plt.title('Radon transform')
     plt.xlabel('Angle (degrees)')
     plt.ylabel('rho')
-    plt.yticks([0, 20, 120, 220, 320, 420, 520, 620, 640], [-N//2, -300, -200, -100, 0, 100, 200, 300, N//2])
+    plt.yticks([0, 53, 153, 253, 353, 453, 553, 653, 753, 853, 906], [-453, -400, -300, -200, -100, 0, 100, 200, 300, 400, 453])
     plt.savefig('images/p4/p4b_radon.png')
 
     # theta is the angle of the x-coordinate of the Radon image's maximum value
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     plt.title('Verticle projection')
     plt.xlabel('x-axis')
     plt.ylabel('Intensity')
-    plt.xticks([0, 20, 120, 220, 320, 420, 520, 620, 640], [' ', -300, -200, -100, 0, 100, 200, 300, ' '])
+    plt.xticks([0, 53, 153, 253, 353, 453, 553, 653, 753, 853, 906], [' ', -400, -300, -200, -100, 0, 100, 200, 300, 400, ' '])
     plt.savefig('images/p4/p4b_intensity.png')
 
     # get the motion blur length
