@@ -1,0 +1,1 @@
+sinogram = load('images/origin_images/sinogram.mat');
