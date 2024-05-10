@@ -27,4 +27,3 @@ To run the code, use the following command in matlab in folder `$PATH_TO_FOLDER_
 ```bash
 p4c
 ```
-
