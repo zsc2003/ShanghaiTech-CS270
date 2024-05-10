@@ -5,25 +5,17 @@ conda activate CS270
 pip install -r requirements.txt
 ```
 
-To run the code, use the following command:
+To run the code, use the following command in matlab in folder `$PATH_TO_FOLDER_WITH_README/$problem_number`:
 ```bash
-cd ./$PATH_TO_FOLDER_WITH_README
-python ./$problem_number/$subproblem_number.py
+$subproblem_number
 ```
 
 Where problem numbers are
 ```bash
-p2, p3
+p1, p2, p3
 ```
 
 subproblem numbers are
 ```bash
-p2a, p2b, p3
-```
-
-Specifically, in order to load the `sinogram.mat` file, the `p1/p1` is apply in matlab.
-
-To run the code, use the following command in matlab in folder `$PATH_TO_FOLDER_WITH_README/p1`:
-```bash
-p1
+p1, p2a, p2b, p3
 ```
