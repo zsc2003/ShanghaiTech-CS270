@@ -1,54 +1,54 @@
-% In this problem, you need to turn sea_house.jpg to super pixel style using SLIC algorithm with cluster center 100, 500 and 1000
-% (In practice, number of cluster center can be different with these values, but should be close to these values) show the result images.
-% Show the result and tell the tile angle in your report.
-clear;
-close;
+clear; clc;
 
-image = imread('images/sea_house.jpg');
+image = imread('../../images/origin_images/seahouse.jpg');
 image = im2double(image);
 
-num_clusters = [100, 500, 1000];
-results = cell(1, length(num_clusters));
-for i = 1:length(num_clusters)
-    results{i} = super_pixel(image, num_clusters(i), 30);
+cluster_nums = [100, 500, 1000];
+results = [cell(1, length(cluster_nums))];
+for i = 1:length(cluster_nums)
+    results{i} = SLIC(image, cluster_nums(i));
 end
 
-imwrite(image, "figures/sea-house-original.png");
-imwrite(results{1}, "figures/sea-house-100.png");
-imwrite(results{2}, "figures/sea-house-500.png");
-imwrite(results{3}, "figures/sea-house-1000.png");
+figure;
+subplot(2, 2, 1);
+imshow(image);
+title('Original Image');
+subplot(2, 2, 2);
+imshow(results{1});
+title('100 cluster centers');
+subplot(2, 2, 3);
+imshow(results{2});
+title('500 cluster centers');
+subplot(2, 2, 4);
+imshow(results{3});
+title('1000 cluster centers');
 
-% Super pixel with Simple Linear Iterative Clustering (SLIC)
-% Input:
-%   image: input image
-%   num_clusters: number of superpixels
-%   num_iterations: number of iterations
-% Output:
-%   result: superpixel
-function result = super_pixel(image, num_clusters, num_iterations)
-    % Initialize cluster centers
+set(gcf, 'Units', 'Inches');
+pos = get(gcf, 'Position');
+set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
+print(gcf, '../../images/p3/p3.png', '-dpng', '-r300');
+
+
+% SLIC superpixel segmentation
+function result = SLIC(image, cluster_num)
     [height, width, ~] = size(image);
+
+    % Initialize
+    step = round(sqrt(height * width / cluster_num));
+
+    % initialize cluster centers by sampling pixels at regular grid step
+    [cx, cy] = meshgrid(round(step / 2):step:width - 1, round(step / 2):step:height - 1);
+    centers = [cy(:), cx(:)];
+    center_num = size(centers, 1);
 
     % Convert image to feature space
     lab_image = rgb2lab(image);
-    pos_image = cat(3, ...
-        repmat(1:height, [width, 1])', ...
-        repmat(1:width, [height, 1]) ...
-    );
+    pos_image = cat(3, repmat(1:height, [width, 1])', repmat(1:width, [height, 1]));
 
-    % Initialize center
-    step = round(sqrt(height * width / num_clusters));
-    [cx, cy] = meshgrid( ...
-        round(step / 2):step:width - 1, ...
-        round(step / 2):step:height - 1 ...
-    );
-    centers = [cy(:), cx(:)];
-    move_centers(centers, image);
-    size(centers)
+    lab_center = zeros(center_num, size(lab_image, 3));
+    pos_center = zeros(center_num, size(pos_image, 3));
 
-    lab_center = zeros(size(centers, 1), size(lab_image, 3));
-    pos_center = zeros(size(centers, 1), size(pos_image, 3));
-    
+    % sub2ind : get the index of the element in the matrix
     for k = 1:size(lab_image, 3)
         lab_slice = lab_image(:, :, k);
         lab_center(:, k) = lab_slice(sub2ind(size(lab_slice), centers(:, 1), centers(:, 2)));
@@ -58,13 +58,17 @@ function result = super_pixel(image, num_clusters, num_iterations)
         pos_center(:, k) = pos_slice(sub2ind(size(pos_slice), centers(:, 1), centers(:, 2)));
     end
 
-    % Initialize label and distance
+    % move cluster centers to the lowest gradient position in a 3 * 3 neighborhood
+    move_centers(centers, image);
+
+    % setup label and distance
     label = zeros(height, width);
     distance = Inf(height, width);
 
-    % K-means clustering
+    % Assignment
+    num_iterations=30;
     for iter = 1:num_iterations
-        for i = 1:size(centers, 1)
+        for i = 1:center_num
             % 2 * step region around the center
             ymin = max(1, pos_center(i, 1) - step);
             ymax = min(height, pos_center(i, 1) + step);
@@ -75,13 +79,13 @@ function result = super_pixel(image, num_clusters, num_iterations)
             lab_feature = reshape(lab_image(ymin:ymax, xmin:xmax, :), [], 3);
             pos_feature = reshape(pos_image(ymin:ymax, xmin:xmax, :), [], 2);
 
-            % Calculate the Euclidean distance
+            % compute the distance between the center and each pixel in the region
             lab_distance = sqrt(sum((lab_feature - lab_center(i, :)) .^ 2, 2));
             pos_distance = sqrt(sum((pos_feature - pos_center(i, :)) .^ 2, 2)) / step * 20;
             local_distance = sqrt(lab_distance .^ 2 + pos_distance .^ 2);
             local_distance = reshape(local_distance, ymax - ymin + 1, xmax - xmin + 1);
 
-            % Update label and distance matrices
+            % Update label and distance matrices if D < d(i)
             mask = local_distance < distance(ymin:ymax, xmin:xmax);
 
             old_labels = label(ymin:ymax, xmin:xmax);
@@ -94,7 +98,7 @@ function result = super_pixel(image, num_clusters, num_iterations)
         end
 
         % Update cluster centers
-        for i = 1:size(centers, 1)
+        for i = 1:center_num
             [y, x] = find(label == i);
             if ~isempty(y)
                 for k = 1:size(lab_image, 3)
@@ -111,15 +115,12 @@ function result = super_pixel(image, num_clusters, num_iterations)
     end
 
     % Retrieve the color of each center
-    center_colors = zeros(size(centers, 1), 3);
-    for i = 1:size(centers, 1)
+    center_colors = zeros(center_num, 3);
+    for i = 1:center_num
         center_colors(i, :) = image(pos_center(i, 1), pos_center(i, 2), :);
     end
 
-    % Assign the color of each center to each pixel
-    % Using label as index
-    % label = enforce_connectivity(label, centers);
-    % label
+    % Assign the color of each center to each pixel, use the label as index
     label = reshape(label, [], 1);
     result = zeros(height, width, 3);
     for c = 1:3
@@ -127,12 +128,7 @@ function result = super_pixel(image, num_clusters, num_iterations)
     end
 end
 
-% Move center to local gradient minimum
-% Input:
-%   centers: cluster centers
-%   image: input image
-% Output:
-%   centers: cluster centers
+% move the center to the lowest gradient position in a 3 * 3 neighborhood
 function centers = move_centers(centers, image)
     gray_image = rgb2gray(image);
     centers_left = centers - [0, 1];
