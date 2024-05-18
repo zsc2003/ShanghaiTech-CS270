@@ -99,5 +99,6 @@ function segmented_image = regionSplitMerge(input_image, a, b)
     splitAndMerge(1, 1, image_size(1), image_size(2));
 
     % 输出分割结果
-    segmented_image = segmented_image > 0;
+    % intensity = double(rgb2gray(image)) / 256;
+ = segmented_image > 0;
 end
