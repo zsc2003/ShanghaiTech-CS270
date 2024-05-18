@@ -100,5 +100,5 @@ function segmented_image = regionSplitMerge(input_image, a, b)
 
     % 输出分割结果
     % intensity = double(rgb2gray(image)) / 256;
- = segmented_image > 0;
+lab = segmented_image > 0;
 end
