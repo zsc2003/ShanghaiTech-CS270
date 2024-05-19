@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  6 MAY 2024 16:02
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  19 MAY 2024 23:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -764,23 +764,51 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 [1
 
-] (./p1.tex [2]) (./p2.tex [3]) (./p3.tex)
+] (./p1.tex
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 3.
+File: ../images/p1/p1.png Graphic file (type bmp)
+<../images/p1/p1.png>
+ [2]) (./p2.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
-Package caption Warning: Unused \captionsetup[figure] on input line 19.
-See the caption package documentation for explanation.
+ []
 
-[4] (./report.aux)
+File: ../images/p2/p2a_origin.png Graphic file (type bmp)
+<../images/p2/p2a_origin.png>
+File: ../images/p2/p2a_result.png Graphic file (type bmp)
+<../images/p2/p2a_result.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
+
+ []
+
+[3]
+File: ../images/p2/p2b_blocksize_4.png Graphic file (type bmp)
+<../images/p2/p2b_blocksize_4.png>
+File: ../images/p2/p2b_blocksize_8.png Graphic file (type bmp)
+<../images/p2/p2b_blocksize_8.png>
+ [4]) (./p3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
+
+ []
+
+File: ../images/p3/p3.png Graphic file (type bmp)
+<../images/p3/p3.png>
+) [5] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 19653 strings out of 476683
- 401775 string characters out of 5807576
- 1846012 words of memory out of 5000000
- 39576 multiletter control sequences out of 15000+600000
- 522862 words of font info for 85 fonts, out of 8000000 for 9000
+ 19757 strings out of 476683
+ 403918 string characters out of 5807576
+ 1848012 words of memory out of 5000000
+ 39656 multiletter control sequences out of 15000+600000
+ 528370 words of font info for 111 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 89i,6n,97p,341b,337s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,9n,97p,341b,393s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (4 pages).
+Output written on report.pdf (5 pages).
