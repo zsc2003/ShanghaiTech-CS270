@@ -1,104 +1,98 @@
-% clear; clc;
-
-% image = imread('../../images/origin_images/nebula.jpg');
-
-% region_size = [[8,8], [4,4]]
-% results = [cell(1, length(region_size))];
-% for i = 1:length(region_size)
-%     result{i} = zeros(size(image));
-%     Region_Splitting_and_Merging(image, results{i}, 1, size(image, 1), 1, size(image, 2), region_size(i));
-% end
-
-% % set(gcf, 'Units', 'Inches');
-% % pos = get(gcf, 'Position');
-% % set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
-% % print(gcf, '../../images/p2/p2b.png', '-dpng', '-r300');
-
-
-% % Region Splitting and Merging
-% % let result to be 0 / 1 which represents the region satisfies the condition(Q) or not
-% % region_size is the minimum size of the region
-% function result = Region_Splitting_and_Merging(image, result, up, down, left, right, region_size)
-%     [height, width, ~] = size(image);
-
-%     % split and merge
-%     if down - up < region_size(1) || right - left < region_size(2)
-%         Q = get_Q(region);
-%         result(up:down, left:right) = Q;
-%         return;
-%     end
-
-%     % split
-%     x_mid = floor((up + down) / 2);
-%     y_mid = floor((left + right) / 2);
-
-%     region1 = image(up:x_mid, left:y_mid, :);
-%     region2 = image(up:x_mid, y_mid+1:right, :);
-%     region3 = image(x_mid+1:down, left:y_mid, :);
-%     region4 = image(x_mid+1:down, y_mid+1:right, :);
-    
-    
-
-% end
-
-
-% function get_Q(image)
-%     [height, width, ~] = size(image);
-%     % if sigma > a and 0 < m < b, Q = True, else Q = False
-%     % m is the mean of the region, sigma is the standard deviation of the region
-%     % a = 0.7, b = 170
-%     a = 0.7;
-%     b = 170;
-%     m = mean(image(:));
-%     sigma = std(image(:));
-%     Q = sigma > a && 0 < m < b;
-%     return Q;
-% end
-
-
-
-
 clear; clc;
 
 image = imread('../../images/origin_images/nebula.jpg');
-result = regionSplitMerge(image, 0.7, 170); % 这里的10和200为示例阈值
-imshow(uint8(result)*255);
+intensity = double(rgb2gray(image));
 
+% resize to the power of 2
+[w, h] = size(intensity);
+new_w = 2 ^ nextpow2(w);
+new_h = 2 ^ nextpow2(h);
 
-function segmented_image = regionSplitMerge(input_image, a, b)
-    % 输入图像转换为灰度图像
+intensity = padarray(intensity, [new_w - w, new_h - h], 0, 'post');
 
-    % 初始化
-    image_size = size(input_image);
-    segmented_image = zeros(image_size);
+a = 0.7;
+b = 170;
 
-    % 递归区域分割函数
-    function splitAndMerge(x, y, width, height)
-        sub_image = input_image(x:x+width-1, y:y+height-1);
-        sigma = std(x(:));
-        m = mean(sub_image(:));
+for block_size = [4, 8]
+    figure;
+    subplot(1, 3, 1);
+    imshow(image, []);
+    title('origin image');
 
-        % 检查分割条件
-        if width > 8 || height > 8
-            if sigma > a && m > 0 && m < b
-                % 继续分割
-                midx = floor(width/2);
-                midy = floor(height/2);
-                splitAndMerge(x, y, midx, midy);
-                splitAndMerge(x + midx, y, width - midx, midy);
-                splitAndMerge(x, y + midy, midx, height - midy);
-                splitAndMerge(x + midx, y + midy, width - midx, height - midy);
-            else
-                % 不分割，标记为1
-                segmented_image(x:x+width-1, y:y+height-1) = 1;
+    splited_block = split(intensity, block_size, a, b, w, h);
+    merged_block = merge(intensity, splited_block, a, b);
+    merged_block = merged_block(1:w, 1:h);
+
+    subplot(1, 3, 3);
+    imshow(merged_block, []);
+    title('foreground image');
+
+    set(gcf, 'Units', 'Inches');
+    pos = get(gcf, 'Position');
+    set(gcf, 'PaperPositionMode', 'Auto', 'PaperUnits', 'Inches', 'PaperSize', [pos(3), pos(4)]);
+    print(gcf, "../../images/p2/p2b_blocksize_" + num2str(block_size) + ".png", '-dpng', '-r300');
+end
+
+function mask = merge(intensity, S, a, b)
+    mask = zeros(size(intensity));
+    max_dim = full(max(S(:)));
+
+    % merge the blocks
+    for dim = 1:max_dim
+        [vals, r, c] = qtgetblk(intensity, S, dim);
+        numblocks = length(r);
+        for i = 1:numblocks
+            region = intensity(r(i):r(i)+dim-1, c(i):c(i)+dim-1);
+            sigma = std2(region);
+            m = mean2(region);
+            if (sigma > 1) && (0 < m) && (m < b)
+                mask(r(i):r(i)+dim-1, c(i):c(i)+dim-1) = 1;
             end
         end
     end
+end
 
-    % 开始递归过程
-    splitAndMerge(1, 1, image_size(1), image_size(2));
 
-    % 输出分割结果
-    % intensity = double(rgb2gray(image)) / 256;
-lab = segmented_image > 0;
+function S = split(intensity, block_size, a, b, w, h)
+    S = qtdecomp(intensity, @split_test, block_size, a, b);
+
+    % visualize the blocks
+    blocks = repmat(uint8(0),size(S));
+    for dim = [1024 512 256 128 64 32 16 8 4 2 1];
+        numblocks = length(find(S==dim));
+        if (numblocks > 0)
+            values = repmat(uint8(1),[dim dim numblocks]);
+            values(2:dim,2:dim,:) = 0;
+            blocks = qtsetblk(blocks,S,dim,values);
+        end
+    end
+
+    blocks(end,1:end) = 1;
+    blocks(1:end,end) = 1;
+
+    subplot(1, 3, 2);
+    imshow(blocks(1:w, 1:h), []);
+    title('split blocks');
+end
+
+
+function flag = split_test(block, block_size, a, b)
+    % input: m-by-m blocks stacked into an m-by-m-by-k array, where k is the number of blocks
+    % output: a logical k-element vector values are 1 if the corresponding block should be split, and 0 otherwise
+
+    [block_w, block_h, block_num] = size(block);
+
+    % an array with length k, all elements are logical 0
+    flag = false(block_num, 1);
+
+    if block_w < block_size
+        return;
+    end
+
+    for i = 1:block_num
+        sigma = std2(block(:, :, i));
+        m = mean2(block(:, :, i));
+        flag(i) = (sigma <= a) && (0 < m) && (m < b);
+        flag(i) = ~flag(i);
+    end
 end
