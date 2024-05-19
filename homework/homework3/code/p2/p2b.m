@@ -25,7 +25,7 @@ for block_size = [4, 8]
 
     subplot(1, 3, 3);
     imshow(merged_block, []);
-    title('foreground image');
+    title('split & merge result');
 
     set(gcf, 'Units', 'Inches');
     pos = get(gcf, 'Position');
