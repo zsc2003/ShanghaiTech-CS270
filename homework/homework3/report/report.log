@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  20 MAY 2024 19:44
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.3.6)  20 MAY 2024 23:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -800,9 +800,6 @@ File: ../images/p3/p3.png Graphic file (type bmp)
 ) [5] (./report.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
