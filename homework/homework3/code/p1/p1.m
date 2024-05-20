@@ -11,7 +11,11 @@ fft_sinogram = fftshift(fft(sinogram, [], 1), 1);
 % employ a Hamming window Ramp filter
 Hamming_ramp = abs(ceil(size(sinogram, 1) / 2) - (1:size(sinogram, 1))) / size(sinogram, 1);
 Hamming_ramp = Hamming_ramp';
-filter = hamming(size(sinogram, 1)) .* Hamming_ramp;
+
+N = size(sinogram, 1);
+hamming_function = 0.54 - 0.46 * cos(2 * pi * (0:N-1)' / (N-1));
+
+filter = hamming_function .* Hamming_ramp;
 filter = repmat(filter, 1, size(sinogram, 2));
 
 % 2. Multiply the FFT of each projection by the Hamming filter.
